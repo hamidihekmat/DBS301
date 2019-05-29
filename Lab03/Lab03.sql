@@ -52,3 +52,10 @@ Sort the output so that manager numbers with the most supervised persons are sho
  GROUP BY MANAGER_ID HAVING count(EMPLOYEE_ID) >= 2
  ORDER BY "Supervises" DESC;
 
+/* 6. For each department show the latest and earliest hire date, but exclude departments 10
+and 20 and also exclude those departments where the last person was hired in this century. Sort the
+output so that most recent latest hire dates are shown first. */
+
+SELECT HIRE_DATE "Latest Hire" FROM EMPLOYEES
+WHERE DEPARTMENT_ID NOT IN ('10','20') and HIRE_DATE NOT LIKE '%00'
+ORDER BY TO_DATE(HIRE_DATE) DESC;
