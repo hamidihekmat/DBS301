@@ -15,7 +15,7 @@ SELECT T1.DEPARTMENT_ID "DEPARTMENT" , MAX(SALARY) "Highest" , MIN(SALARY) "Lowe
 INNER JOIN DEPARTMENTS T2
 ON T1.DEPARTMENT_ID = T2.DEPARTMENT_ID
 GROUP BY T1.DEPARTMENT_ID
-ORDER BY MAX(SALARY) DESC;
+ORDER BY "Average" DESC;
 
 /* 3. Display how many people work the same job in the same department. Name these results Dept#, Job
 and HowMany. Include only jobs that involve more than one person.
