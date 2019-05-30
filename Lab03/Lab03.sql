@@ -37,9 +37,9 @@ job_id AD_PRES and AD_VP and also include only jobs that require more than $15,0
 Sort the output so that top paid jobs are shown first. */
 
 
-SELECT JOB_ID "Job#", SALARY "Salary" FROM EMPLOYEES
-WHERE JOB_ID NOT IN ('AD_RES','AD_VP')
-AND SALARY > 15000; 
+SELECT JOB_ID "Job#", SUM(SALARY) "Salary" FROM EMPLOYEES
+GROUP BY JOB_ID HAVING SUM(SALARY) > 15000 AND JOB_ID NOT IN ('AD_PRES','AD_VP')
+ORDER BY SUM(SALARY) DESC;
 
 /* 5. For each manager number display how many persons he / she supervises. Exclude managers with
 numbers 100, 101 and 102 and also include only those managers that supervise more than 2 persons.
