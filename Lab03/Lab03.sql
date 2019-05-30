@@ -22,9 +22,9 @@ and HowMany. Include only jobs that involve more than one person.
 Sort the output so that jobs with the most people involved are shown first. */
 
 
-SELECT DEPARTMENT_ID "Dept#" , COUNT(T1.JOB_ID) "HowMany"
+SELECT DEPARTMENT_ID "Dept#" , T1.JOB_ID "Job",  COUNT(T1.JOB_ID) "HowMany"
 FROM JOBS T1 INNER JOIN EMPLOYEES T2 ON T1.JOB_ID = T2.JOB_ID
-GROUP BY DEPARTMENT_ID HAVING COUNT(T1.JOB_ID) > 1
+GROUP BY DEPARTMENT_ID, T1.JOB_ID HAVING COUNT(T1.JOB_ID) > 1
 ORDER BY "HowMany" desc;
 
 
@@ -56,6 +56,8 @@ Sort the output so that manager numbers with the most supervised persons are sho
 and 20 and also exclude those departments where the last person was hired in this century. Sort the
 output so that most recent latest hire dates are shown first. */
 
-SELECT HIRE_DATE "Latest Hire" FROM EMPLOYEES
-WHERE DEPARTMENT_ID NOT IN ('10','20') and HIRE_DATE NOT LIKE '%00'
-ORDER BY TO_DATE(HIRE_DATE) DESC;
+
+SELECT MAX(HIRE_DATE) "Latest", MIN(HIRE_DATE) "Earliest" FROM EMPLOYEES
+GROUP BY DEPARTMENT_ID HAVING TO_CHAR(MAX(HIRE_DATE), 'YYYY') < 2000
+AND DEPARTMENT_ID NOT IN ('10','20')
+ORDER BY 1 DESC;
