@@ -35,3 +35,13 @@ WHERE STATE_PROVINCE NOT IN ('Ontario','California','Washington')
 ORDER BY "City", "Department Name" ;
 
 
+/* 4. Display the department name and Highest, Lowest and Average pay per each
+ department. Name these results High, Low and Avg.
+ Use JOIN and ON form of the syntax.
+ Sort the output so that department with highest average salary are shown first.
+ */
+ 
+ SELECT DEPARTMENT_NAME "Department Name", MAX(SALARY) "Highest", MIN(SALARY) "Lowest", ROUND(AVG(SALARY)) "Average"  FROM EMPLOYEES T1 
+ INNER JOIN DEPARTMENTS T2 ON T1.DEPARTMENT_ID = T2.DEPARTMENT_ID
+ GROUP BY DEPARTMENT_NAME
+ ORDER BY "Average" DESC;
