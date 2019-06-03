@@ -19,3 +19,19 @@ SELECT FIRST_NAME || ' ' || LAST_NAME "Full Name", HIRE_DATE "Hire Date", SALARY
 INNER JOIN DEPARTMENTS T2 ON T1.DEPARTMENT_ID = T2.DEPARTMENT_ID
 WHERE DEPARTMENT_NAME LIKE 'A%' OR DEPARTMENT_NAME LIKE 'S%'
 ORDER BY "Department Name", T1.LAST_NAME;
+
+/* 3. Display full name of the manager of each department in provinces Ontario,
+California and Washington plus department name, city, postal code and province name. Full
+name should be in format of :
+Last, First. Use the JOIN and ON form of syntax.
+Sort the output by city and then by department name. FULL NAME, DEPARTMENT NAME, CITY POSTAL CODE AND PROVINCE
+*/
+
+
+SELECT  FIRST_NAME || ' ' || LAST_NAME "Full Name", DEPARTMENT_NAME "Department Name", CITY "City", POSTAL_CODE "Postal Code", STATE_PROVINCE "Province"  FROM EMPLOYEES T1 
+INNER JOIN DEPARTMENTS T2 ON T1.DEPARTMENT_ID = T2.DEPARTMENT_ID
+INNER JOIN LOCATIONS T3 ON T2.LOCATION_ID = T3.LOCATION_ID
+WHERE STATE_PROVINCE NOT IN ('Ontario','California','Washington')
+ORDER BY "City", "Department Name" ;
+
+
