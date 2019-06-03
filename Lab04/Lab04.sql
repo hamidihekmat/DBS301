@@ -45,3 +45,13 @@ ORDER BY "City", "Department Name" ;
  INNER JOIN DEPARTMENTS T2 ON T1.DEPARTMENT_ID = T2.DEPARTMENT_ID
  GROUP BY DEPARTMENT_NAME
  ORDER BY "Average" DESC;
+
+/* 5. Display the employee last name and employee number along with their
+ manager’s last name and manager number. Label the columns Employee,
+ Emp#, Manager, and Mgr#, respectively. 
+ */
+
+
+SELECT T1.LAST_NAME "Employee", T1.EMPLOYEE_ID "EMP#", T2.LAST_NAME "Manager", T2.MANAGER_ID "Mgrr#" FROM EMPLOYEES T1
+INNER JOIN EMPLOYEES T2 ON T1.EMPLOYEE_ID = T2.MANAGER_ID;
+
