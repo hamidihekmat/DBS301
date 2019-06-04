@@ -22,3 +22,11 @@ SELECT CITY "City", STATE_PROVINCE || CASE WHEN STATE_PROVINCE IS NULL THEN 'Unk
 WHERE COUNTRY_ID LIKE 'I%'
 ORDER BY 1;
 
+/* 4. Display last name, job id and salary for all employees who earn less than the Average salary in the
+Sales department. Do NOT use Join method.
+Sort the output by top salaries first and then by job_title.
+*/
+
+SELECT LAST_NAME "Last Name", JOB_ID "Job Title", SALARY "Salary" FROM EMPLOYEES
+WHERE SALARY < (SELECT AVG(SALARY)FROM EMPLOYEES WHERE DEPARTMENT_ID = (SELECT DEPARTMENT_ID FROM DEPARTMENTS WHERE DEPARTMENT_NAME = 'Sales'))
+ORDER BY "Salary" DESC, "Job Title" ;
