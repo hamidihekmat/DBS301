@@ -10,7 +10,8 @@ Sort the output by the most recent hire date.
 */
 
 SELECT LAST_NAME "Last Name", JOB_ID "Job ID", HIRE_DATE "Hire Date" FROM EMPLOYEES
-WHERE HIRE_DATE > (SELECT HIRE_DATE FROM EMPLOYEES WHERE LAST_NAME = 'Grant');
+WHERE HIRE_DATE > (SELECT HIRE_DATE FROM EMPLOYEES WHERE LAST_NAME = 'Grant')
+ORDER BY "Hire Date" DESC;
 
 /* 3. Display city, province name and postal code for all departments located in countries that start with
 letter I (meaning Italy, Israel and India). If the province is blank, show message Unknown and the
