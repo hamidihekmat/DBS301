@@ -39,3 +39,13 @@ Sort the output by salary ascending first and then by last_name.
 SELECT LAST_NAME "Last Name", JOB_ID "Job ID", SALARY "Salary" FROM EMPLOYEES 
 WHERE SALARY IN (SELECT SALARY FROM EMPLOYEES WHERE DEPARTMENT_ID = (SELECT DEPARTMENT_ID FROM DEPARTMENTS WHERE DEPARTMENT_NAME = 'IT'))
 ORDER BY "Salary", FIRST_NAME, "Last Name";
+
+/* 6. Display last name and salary for all employees who earn less than the Lowest salary in ANY
+department.
+Sort the output by top salaries first and then by last name. 
+*/
+
+SELECT LAST_NAME "Last Name", SALARY FROM EMPLOYEES
+WHERE SALARY < ANY (SELECT MIN(SALARY) FROM EMPLOYEES
+GROUP BY DEPARTMENT_ID)
+ORDER BY 2 DESC, "Last Name";
