@@ -30,3 +30,12 @@ Sort the output by top salaries first and then by job_title.
 SELECT LAST_NAME "Last Name", JOB_ID "Job Title", SALARY "Salary" FROM EMPLOYEES
 WHERE SALARY < (SELECT AVG(SALARY)FROM EMPLOYEES WHERE DEPARTMENT_ID = (SELECT DEPARTMENT_ID FROM DEPARTMENTS WHERE DEPARTMENT_NAME = 'Sales'))
 ORDER BY "Salary" DESC, "Job Title" ;
+
+/* 5. Display last name, job id and salary for all employees whose salary matches any of
+the salaries from the IT Department.
+Sort the output by salary ascending first and then by last_name.
+*/
+
+SELECT LAST_NAME "Last Name", JOB_ID "Job ID", SALARY "Salary" FROM EMPLOYEES 
+WHERE SALARY IN (SELECT SALARY FROM EMPLOYEES WHERE DEPARTMENT_ID = (SELECT DEPARTMENT_ID FROM DEPARTMENTS WHERE DEPARTMENT_NAME = 'IT'))
+ORDER BY "Salary", FIRST_NAME, "Last Name";
