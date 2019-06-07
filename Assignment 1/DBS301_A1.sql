@@ -13,8 +13,8 @@ Full Name to 25 characters. The output lines should look like this line:
 */
 
 
-SELECT EMPLOYEE_ID "Employee #", SUBSTR((LAST_NAME || ', ' || FIRST_NAME), 1, 25) "Full Name", JOB_ID "Job", '[' || TO_CHAR(HIRE_DATE, 'MONTH') || TO_CHAR(LAST_DAY(HIRE_DATE), 'DDth') || ' of ' || 
-TO_CHAR(HIRE_DATE, 'YYYY') || ']' "Hire Date"
+SELECT EMPLOYEE_ID "ID", SUBSTR((LAST_NAME || ', ' || FIRST_NAME), 1, 25) "Full Name", JOB_ID "Job", '[' || TO_CHAR(HIRE_DATE, 'FMMONTH') || ' ' || TO_CHAR(LAST_DAY(HIRE_DATE), 'DDth') || ' of ' || 
+TO_CHAR(HIRE_DATE, 'YYYY') || ']' "Start Date"
 FROM EMPLOYEES
 WHERE TO_CHAR(HIRE_DATE, 'MM') = '05' OR TO_CHAR(HIRE_DATE, 'MM') = '11'
 AND TO_CHAR(HIRE_DATE, 'YYYY') NOT IN ('1994','1995')
