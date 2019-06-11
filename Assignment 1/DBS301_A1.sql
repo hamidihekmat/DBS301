@@ -58,3 +58,25 @@ SELECT T1.LAST_NAME "Last Name", T1.SALARY "Salary", T1.JOB_ID "ID", T1.MANAGER_
 CASE WHEN T1.MANAGER_ID IS NULL THEN 'None' END "Manager #", (((T1.SALARY + 1000) * 12) + (1 * NVL(T1.COMMISSION_PCT,0))) "Total Income" FROM EMPLOYEES T1 
 INNER JOIN EMPLOYEES T2 ON T1.MANAGER_ID = T2.EMPLOYEE_ID
 WHERE T1.COMMISSION_PCT IS NULL OR T1.JOB_ID LIKE 'SA%' AND ((T1.SALARY + 1000) +  (1 * NVL(T1.COMMISSION_PCT,0))) > 15000;
+
+
+EDITED 
+
+/* 3. Display the employee last name, salary, job title and manager# of all
+employees not earning a commission OR if they work in SALES
+department, but only if their total monthly salary with $1000 included bonus
+and commission (if earned) is greater than $15,000. 
+Lets assume that all employees receive this bonus.
+If an employee does not have a manager, then display the word NONE
+instead. This column should have an alias Manager#.
+Display the Total annual salary as well in the form of $135,600.00 with the
+heading Total Income. Sort the result so that best paid employees are shown
+first. The output lines should look like this sample line:
+ De Haan 17000 AD_VP 100 $216,000.0
+*/
+
+
+SELECT T1.LAST_NAME, T1.SALARY "Salary", T1.JOB_ID "ID", T1.MANAGER_ID || CASE WHEN T1.MANAGER_ID IS NULL THEN 'NONE' END "Manager#", (((T1.SALARY + 1000) * 12) + (1 * NVL(T1.COMMISSION_PCT,0))) "Total Income" FROM EMPLOYEES T1
+INNER JOIN EMPLOYEES T2 ON T1.EMPLOYEE_ID = T2.MANAGER_ID
+WHERE T1.COMMISSION_PCT IS NULL AND (((T1.SALARY + 1000)) + (1 * NVL(T1.COMMISSION_PCT,1))) > 15000 OR T1.JOB_ID LIKE 'SA'
+ORDER BY "Salary" DESC;
