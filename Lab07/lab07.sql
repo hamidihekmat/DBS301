@@ -1,4 +1,6 @@
-/* 
+/*
+Name: Hekmat Hamidi
+
 -- EXAMPLE 1:   List all players whose last name starts with "St" and whose first name starts with "D", 
 --              Do NOT use and comparator operators (i.e. AND or OR)
 */
