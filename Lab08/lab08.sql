@@ -29,6 +29,45 @@ CREATE VIEW vwALLEmps AS
 JOIN DEPARTMENTS d USING(DEPARTMENT_ID)
 JOIN LOCATIONS l USING(LOCATION_ID));
 
+/* 5)	Use the vwAllEmps view to:
+a.	Display the employee_id, last_name, salary and city for all employees
+b.	Display the total salary of all employees by city
+c.	Increase the salary of the lowest paid employee(s) in each department by 120
+d.	What happens if you try to insert an employee by providing values for all columns in this view?
+e.	Delete the employee named Vargas. Did it work? Show proof.
+ */
+ 
+ /* a) */
+SELECT EMPLOYEE_ID, LAST_NAME, SALARY, CITY
+FROM vwALLEmps;
+
+/* b) */
+
+SELECT SUM(SALARY) "Total Salary"
+FROM vwALLEmps
+GROUP BY CITY;
+
+/* c) */
+SELECT LAST_NAME "Last Name", Salary "Salary w $120"
+FROM vwALLEmps
+WHERE (DEPARTMENT_ID, SALARY) IN (SELECT DEPARTMENT_ID, MIN(SALARY) 
+                                    FROM vwALLEmps
+                                GROUP BY DEPARTMENT_ID);
+
+/* d) You cannot insert a new data into view. The view is dependent on the other relational tables
+ERRPOR*/
+
+/* e) */
+
+DELETE FROM vwALLEmps 
+WHERE UPPER(LAST_NAME) = 'VARGAS';
+
+/* Deleted Successfully */ 
+SELECT *
+FROM vwALLEmps;
+
+
+
 
 /* (9)	Use the vwAllDeptSumm view to display department name and number of employees for departments that have more than the average number of employees */
 SELECT "Department Name", "Total Employees" FROM vwALLDEPTSumm
