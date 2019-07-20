@@ -68,6 +68,16 @@ FROM vwALLEmps;
 
 
 
+/* 6)	Create a view named vwAllDepts that consists of all departments and includes department_id, department_name, city and country (if applicable) */
+CREATE VIEW vwALLDepts AS
+(SELECT DEPARTMENT_ID, DEPARTMENT_NAME, CITY, COUNTRY_ID FROM DEPARTMENTS 
+JOIN LOCATIONS USING(LOCATION_ID)
+JOIN COUNTRIES c USING(COUNTRY_ID));
+
+
+
+
+
 
 /* (9)	Use the vwAllDeptSumm view to display department name and number of employees for departments that have more than the average number of employees */
 SELECT "Department Name", "Total Employees" FROM vwALLDEPTSumm
