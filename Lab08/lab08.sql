@@ -24,7 +24,7 @@ WHERE (DEPARTMENT_ID, SALARY) IN (SELECT DEPARTMENT_ID, MIN(SALARY)
 
 /* 4)	Create a view named vwAllEmps that consists of all employees includes employee_id, last_name, salary, department_id, department_name, city and country (if applicable) */
 
-CREATE VIEW vmALLEmps AS
+CREATE VIEW vwALLEmps AS
 (SELECT EMPLOYEE_ID, LAST_NAME, SALARY, DEPARTMENT_ID, CITY, COUNTRY_ID FROM EMPLOYEES e 
 JOIN DEPARTMENTS d USING(DEPARTMENT_ID)
 JOIN LOCATIONS l USING(LOCATION_ID));
