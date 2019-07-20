@@ -93,6 +93,13 @@ SELECT CITY, COUNT(DEPARTMENT_ID) "# of Depts"
 FROM vwALLDepts
 GROUP BY CITY;
 
+/* 8)	Create a view called vwAllDeptSumm that consists of all departments and includes for each department: department_id, department_name, number of employees, number of salaried employees, total salary of all employees. Number of Salaried must be different from number of employees. The difference is some get commission.*/
+CREATE VIEW vwALLDeptSumm AS 
+(SELECT d.DEPARTMENT_ID "Department ID", d.DEPARTMENT_NAME "Department Name", COUNT(e.EMPLOYEE_ID) "Total Employees", (COUNT(e.EMPLOYEE_ID) - COUNT(e.COMMISSION_PCT)) "Salaried Employees", SUM(e.SALARY) "Total Salary"
+FROM EMPLOYEES e
+FULL JOIN DEPARTMENTS d ON e.DEPARTMENT_ID = d.DEPARTMENT_ID
+GROUP BY d.DEPARTMENT_ID, d.DEPARTMENT_NAME);
+
 
 
 /* (9)	Use the vwAllDeptSumm view to display department name and number of employees for departments that have more than the average number of employees */
