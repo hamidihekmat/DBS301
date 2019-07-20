@@ -75,7 +75,23 @@ JOIN LOCATIONS USING(LOCATION_ID)
 JOIN COUNTRIES c USING(COUNTRY_ID));
 
 
+/* 7)	Use the vwAllDepts view to:
 
+a.	For all departments display the department_id, name and city
+b.	For each city that has departments located in it display the number of departments by city
+ */
+ 
+ /* a) */
+ 
+ SELECT DEPARTMENT_ID, DEPARTMENT_NAME, CITY
+ FROM vwALLDepts;
+ 
+ 
+/* b) */
+
+SELECT CITY, COUNT(DEPARTMENT_ID) "# of Depts"
+FROM vwALLDepts
+GROUP BY CITY;
 
 
 
