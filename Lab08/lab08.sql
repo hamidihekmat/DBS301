@@ -14,6 +14,13 @@ WHERE (DEPARTMENT_ID, SALARY) IN (SELECT DEPARTMENT_ID, MIN(SALARY)
                                     FROM EMPLOYEES
                                 GROUP BY DEPARTMENT_ID);
 
+/* 3)	Give each of the employees in question 2 a $120 bonus. */
+
+SELECT LAST_NAME || ' ' || FIRST_NAME "Full Name", Salary "Salary w $120"
+FROM EMPLOYEES 
+WHERE (DEPARTMENT_ID, SALARY) IN (SELECT DEPARTMENT_ID, MIN(SALARY) 
+                                    FROM EMPLOYEES
+                                GROUP BY DEPARTMENT_ID);
 
 
 /* (9)	Use the vwAllDeptSumm view to display department name and number of employees for departments that have more than the average number of employees */
