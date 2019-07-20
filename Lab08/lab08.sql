@@ -1,3 +1,16 @@
+/* 1)	Display the names of the employees whose salary is the same as the lowest salaried employee in any department. */
+
+SELECT LAST_NAME || ' ' || FIRST_NAME "Full Name"
+FROM EMPLOYEES 
+WHERE SALARY IN (SELECT MIN(SALARY) 
+                    FROM EMPLOYEES
+                GROUP BY DEPARTMENT_ID);
+
+
+
+
+
+
 /* (9)	Use the vwAllDeptSumm view to display department name and number of employees for departments that have more than the average number of employees */
 SELECT "Department Name", "Total Employees" FROM vwALLDEPTSumm
 WHERE "Total Employees" > (SELECT avg("Total Employees") from vwALLDEPTSumm);
