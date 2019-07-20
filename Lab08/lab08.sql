@@ -22,6 +22,13 @@ WHERE (DEPARTMENT_ID, SALARY) IN (SELECT DEPARTMENT_ID, MIN(SALARY)
                                     FROM EMPLOYEES
                                 GROUP BY DEPARTMENT_ID);
 
+/* 4)	Create a view named vwAllEmps that consists of all employees includes employee_id, last_name, salary, department_id, department_name, city and country (if applicable) */
+
+CREATE VIEW vmALLEmps AS
+(SELECT EMPLOYEE_ID, LAST_NAME, SALARY, DEPARTMENT_ID, CITY, COUNTRY_ID FROM EMPLOYEES e 
+JOIN DEPARTMENTS d USING(DEPARTMENT_ID)
+JOIN LOCATIONS l USING(LOCATION_ID));
+
 
 /* (9)	Use the vwAllDeptSumm view to display department name and number of employees for departments that have more than the average number of employees */
 SELECT "Department Name", "Total Employees" FROM vwALLDEPTSumm
