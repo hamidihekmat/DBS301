@@ -7,7 +7,12 @@ WHERE SALARY IN (SELECT MIN(SALARY)
                 GROUP BY DEPARTMENT_ID);
 
 
-
+/* 2)	Display the names of the employee(s) whose salary is the lowest in each department. */
+SELECT LAST_NAME || ' ' || FIRST_NAME "Full Name"
+FROM EMPLOYEES 
+WHERE (DEPARTMENT_ID, SALARY) IN (SELECT DEPARTMENT_ID, MIN(SALARY) 
+                                    FROM EMPLOYEES
+                                GROUP BY DEPARTMENT_ID);
 
 
 
