@@ -177,18 +177,36 @@ JOBCODE          VARCHAR2(12)
 */
 
 
-/*  5. Declare column Salary in table L09SalesRep as mandatory one and Column Location in table L09GoodCust as optional one.
-You can see location is already optional.
+/*
+5.	Lengthen FNAME in L09SalesRep to 37. The result of a DESCRIBE should show it happening
 */
 
+DESCRIBE L09SalesRep;
+
+/* Leghten FNAME */
+
 ALTER TABLE L09SalesRep
-  MODIFY SALARY NUMBER(8,2) NOT NULL;
-  
-  
+MODIFY FNAME VARCHAR2(37);
+
 /* Check altered table */
-
-desc L09SalesRep;
-
+DESCRIBE L09SalesRep;
 
 
+/* You can only decrease the size or length of Name in L09GoodCust to the maximum length of data already stored.
+Do it by using SQL and not by looking at each entry and counting the characters. May take two SQL statements
+*/
 
+SELECT MAX(LENGTH(FNAME)) FROM L09SalesREp;
+
+ALTER TABLE L09SalesRep
+MODIFY FNAME VARCHAR2(8);
+
+
+/* Now get rid of the column JobCode in table L09SalesRep in a way that will not affect daily performance. */
+
+ALTER TABLE L09SalesRep
+DROP COLUMN JobCode CHECKPOINT 250;
+
+/* Check dropped column */
+
+DESC L09SalesRep;
