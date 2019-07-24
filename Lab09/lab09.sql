@@ -177,4 +177,18 @@ JOBCODE          VARCHAR2(12)
 */
 
 
+/*  5. Declare column Salary in table L09SalesRep as mandatory one and Column Location in table L09GoodCust as optional one.
+You can see location is already optional.
+*/
+
+ALTER TABLE L09SalesRep
+  MODIFY SALARY NUMBER(8,2) NOT NULL;
+  
+  
+/* Check altered table */
+
+desc L09SalesRep;
+
+
+
 
