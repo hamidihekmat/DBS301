@@ -154,4 +154,27 @@ INSERT INTO L09GoodCust VALUES (
 SELECT * FROM L09GoodCust;
 
 
+/* 4.  Now add new column to table L09SalesRep called JobCode that will be of variable character type with max length of 12.
+Do a DESCRIBE L09SalesRep to ensure it executed */
+
+ALTER TABLE L09SalesRep
+ADD (JobCode VARCHAR2(12));
+
+
+/* Check altered table */
+
+DESC L09SalesRep;
+
+/*
+RESULTS
+REPID            NUMBER(6)
+FNAME            VARCHAR2(20)
+LNAME            VARCHAR2(20)
+PHONE#           VARCHAR2(20)
+SALARY           NUMBER(8,2)
+COMMISSION       NUMBER(2,2)
+JOBCODE          VARCHAR2(12)
+*/
+
+
 
