@@ -108,6 +108,50 @@ INSERT INTO L09Cust (CUST#, CUSTNAME, CITY, RATING, SALESREP#) VALUES (
 SELECT * FROM L09Cust;
 
 
+/* 3. Create table L09GoodCust by using following columns but only if their rating is A or B. 
+Column          	Type    	    
+CustId		NUMBER	(6)	
+Name		VARCHAR2(30)    
+Location		VARCHAR2(20)     🡪 ALL these columns’ data types match ones
+RepId		NUMBER(7)    	   in table L09Cust
+*/
+
+CREATE TABLE L09GoodCust (
+   CustId NUMBER(6),
+   Name VARCHAR2(30),
+   Location VARCHAR2(20),
+   RepId NUMBER(7));   
+   
+/* Insert Data into Tables */
+
+INSERT INTO L09GoodCust VALUES (
+502,
+'Black Giant',
+'Ottawa',
+202);
+
+INSERT INTO L09GoodCust VALUES (
+503,
+'Mother Goose',
+'London',
+202);
+
+INSERT INTO L09GoodCust VALUES (
+504,
+'BLUE SKY LTD',
+'Vancouver',
+202);
+
+INSERT INTO L09GoodCust VALUES (
+701,
+'MIKE and SAM inc.',
+'Kingston',
+10);
+
+
+
+/* Check the if inserted */
+SELECT * FROM L09GoodCust;
 
 
 
