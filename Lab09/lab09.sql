@@ -36,3 +36,17 @@ SELECT * FROM L09SalesRep;
        176 Jonathon             Taylor               011.44.1644.429265         8600         .2
  
  */
+
+
+
+ /* 2. Create L09Cust table. */
+
+CREATE TABLE L09Cust (
+   CUST#	  	NUMBER(6),
+   CUSTNAME 	VARCHAR2(30),
+   CITY 		VARCHAR2(20),
+   RATING		CHAR(1),
+   COMMENTS	VARCHAR2(200),
+   SALESREP#	NUMBER(7) );
+
+
