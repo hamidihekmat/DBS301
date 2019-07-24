@@ -50,3 +50,64 @@ CREATE TABLE L09Cust (
    SALESREP#	NUMBER(7) );
 
 
+
+INSERT INTO L09Cust (CUST#, CUSTNAME, CITY, RATING, SALESREP#) VALUES (
+501, 
+'ABC LTD.', 
+'Montreal', 
+'C', 
+201);
+
+
+INSERT INTO L09Cust (CUST#, CUSTNAME, CITY, RATING, SALESREP#) VALUES (
+502, 
+'Black Giant', 
+'Ottawa', 
+'B', 
+202);
+/*--------------- */
+
+INSERT INTO L09Cust (CUST#, CUSTNAME, CITY, RATING, SALESREP#) VALUES (
+503, 
+'Mother Goose', 
+'London', 
+'B', 
+202);
+
+INSERT INTO L09Cust (CUST#, CUSTNAME, CITY, RATING, SALESREP#) VALUES (
+701, 
+'BLUE SKY LTD', 
+'Vancouver', 
+'B', 
+102); 
+
+INSERT INTO L09Cust (CUST#, CUSTNAME, CITY, RATING, SALESREP#) VALUES (
+702, 
+'MIKE and SAM Inc.', 
+'Kingston', 
+'A', 
+107);
+
+INSERT INTO L09Cust (CUST#, CUSTNAME, CITY, RATING, SALESREP#) VALUES (
+703, 
+'RED PLANET', 
+'Mississauga', 
+'C', 
+107);
+
+INSERT INTO L09Cust (CUST#, CUSTNAME, CITY, RATING, SALESREP#) VALUES (
+717, 
+'BLUE SKY LTD', 
+'Regina', 
+'D', 
+102);
+
+
+/* Check if values inserted */
+
+SELECT * FROM L09Cust;
+
+
+
+
+
