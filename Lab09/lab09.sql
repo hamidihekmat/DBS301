@@ -232,3 +232,15 @@ desc l09cust;
 desc l09salesrep;
 
 
+/* 9. Restrict amount of Salary column to be in the range [6000, 12000] and Commission to be not more than 50%. */
+
+ALTER TABLE L09SalesRep
+ADD CONSTRAINT check_salary_range
+  CHECK (Salary BETWEEN 6000 AND 12000);
+  
+  
+ALTER TABLE L09SalesRep
+ADD CONSTRAINT check_commission
+  CHECK (Commission != .5);
+  
+
