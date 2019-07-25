@@ -183,7 +183,7 @@ JOBCODE          VARCHAR2(12)
 
 DESCRIBE L09SalesRep;
 
-/* Leghten FNAME */
+/* Lenghten FNAME */
 
 ALTER TABLE L09SalesRep
 MODIFY FNAME VARCHAR2(37);
@@ -202,11 +202,25 @@ ALTER TABLE L09SalesRep
 MODIFY FNAME VARCHAR2(8);
 
 
-/* Now get rid of the column JobCode in table L09SalesRep in a way that will not affect daily performance. */
+/* 6. Now get rid of the column JobCode in table L09SalesRep in a way that will not affect daily performance. */
 
 ALTER TABLE L09SalesRep
 DROP COLUMN JobCode CHECKPOINT 250;
 
 /* Check dropped column */
 
-DESC L09SalesRep;
+DESC L09SalesRep;i
+
+/* 7. Declare PK constraints in both new tables  RepId and CustId */
+
+desc l09cust;
+
+/* added pk for L09Cust */
+ALTER TABLE L09Cust 
+ADD CONSTRAINT customer_pk PRIMARY KEY (CustId);
+
+/* add p for L09SalesRep */
+ALTER TABLE L09SalesRep
+ADD CONSTRAINT rep_pk PRIMARY KEY (RepId);
+
+
