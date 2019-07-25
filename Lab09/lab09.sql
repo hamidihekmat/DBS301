@@ -215,12 +215,20 @@ DESC L09SalesRep;i
 
 desc l09cust;
 
+
+/* 8. Declare UK constraints in both new tables  Phone# and Name */
+
 /* added pk for L09Cust */
 ALTER TABLE L09Cust 
-ADD CONSTRAINT customer_pk PRIMARY KEY (CustId);
+ADD CONSTRAINT customername_uk UNIQUE (CUSTNAME);
 
 /* add p for L09SalesRep */
 ALTER TABLE L09SalesRep
-ADD CONSTRAINT rep_pk PRIMARY KEY (RepId);
+ADD CONSTRAINT phone_uk UNIQUE (PHONE#);
+
+
+desc l09cust;
+
+desc l09salesrep;
 
 
